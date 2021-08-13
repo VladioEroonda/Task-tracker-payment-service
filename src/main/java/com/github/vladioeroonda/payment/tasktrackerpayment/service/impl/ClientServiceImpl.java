@@ -63,10 +63,6 @@ public class ClientServiceImpl implements ClientService {
         return convertFromEntityToResponse(clientForSave);
     }
 
-    private Client convertFromRequestToEntity(ClientRequestDto requestDto) {
-        return modelMapper.map(requestDto, Client.class);
-    }
-
     private ClientResponseDto convertFromEntityToResponse(Client client) {
         return modelMapper.map(client, ClientResponseDto.class);
     }
