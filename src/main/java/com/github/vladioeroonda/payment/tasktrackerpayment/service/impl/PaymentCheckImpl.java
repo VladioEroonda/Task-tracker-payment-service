@@ -43,12 +43,12 @@ public class PaymentCheckImpl implements PaymentCheckService {
             );
         });
 
-         Transaction payment =
-                 transactionRepository.checkPayment(customerAccountId, developerAccountId, amount, comment);
+        Transaction payment =
+                transactionRepository.checkPayment(customerAccountId, developerAccountId, amount, comment);
 
-         if (payment==null){
-             throw new TransactionBadDataException("Некорректные сумма или комментарий к платежу. Обратитесь в поддержку");
-         }
+        if (payment == null) {
+            throw new TransactionBadDataException("Некорректные сумма или комментарий к платежу. Обратитесь в поддержку");
+        }
 
         return true;
     }

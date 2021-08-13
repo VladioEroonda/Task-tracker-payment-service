@@ -1,7 +1,6 @@
 package com.github.vladioeroonda.payment.tasktrackerpayment.service.impl;
 
 
-import com.github.vladioeroonda.payment.tasktrackerpayment.dto.request.ClientRequestDto;
 import com.github.vladioeroonda.payment.tasktrackerpayment.dto.response.ClientResponseDto;
 import com.github.vladioeroonda.payment.tasktrackerpayment.entity.Client;
 import com.github.vladioeroonda.payment.tasktrackerpayment.exception.ClientBadDataException;

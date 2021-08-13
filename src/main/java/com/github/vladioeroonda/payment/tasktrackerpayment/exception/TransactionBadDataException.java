@@ -1,6 +1,6 @@
 package com.github.vladioeroonda.payment.tasktrackerpayment.exception;
 
-public class TransactionBadDataException extends RuntimeException{
+public class TransactionBadDataException extends RuntimeException {
     public TransactionBadDataException() {
     }
 

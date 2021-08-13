@@ -24,5 +24,4 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
                              @Param("amount") BigDecimal amount,
                              @Param("comment") String comment
     );
-
 }

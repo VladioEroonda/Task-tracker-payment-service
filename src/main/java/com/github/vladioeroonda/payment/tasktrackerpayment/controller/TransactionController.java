@@ -1,11 +1,7 @@
 package com.github.vladioeroonda.payment.tasktrackerpayment.controller;
 
-import com.github.vladioeroonda.payment.tasktrackerpayment.dto.request.ClientRequestDto;
 import com.github.vladioeroonda.payment.tasktrackerpayment.dto.request.TransactionRequestDto;
-import com.github.vladioeroonda.payment.tasktrackerpayment.dto.response.ClientResponseDto;
 import com.github.vladioeroonda.payment.tasktrackerpayment.dto.response.TransactionResponseDto;
-import com.github.vladioeroonda.payment.tasktrackerpayment.entity.Client;
-import com.github.vladioeroonda.payment.tasktrackerpayment.entity.Transaction;
 import com.github.vladioeroonda.payment.tasktrackerpayment.service.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

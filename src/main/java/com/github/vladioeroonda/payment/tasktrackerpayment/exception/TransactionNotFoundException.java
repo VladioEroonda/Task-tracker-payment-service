@@ -1,6 +1,6 @@
 package com.github.vladioeroonda.payment.tasktrackerpayment.exception;
 
-public class TransactionNotFoundException extends RuntimeException{
+public class TransactionNotFoundException extends RuntimeException {
     public TransactionNotFoundException() {
     }
 

@@ -1,6 +1,6 @@
 package com.github.vladioeroonda.payment.tasktrackerpayment.exception;
 
-public class ClientNotFoundException extends RuntimeException{
+public class ClientNotFoundException extends RuntimeException {
     public ClientNotFoundException() {
     }
 

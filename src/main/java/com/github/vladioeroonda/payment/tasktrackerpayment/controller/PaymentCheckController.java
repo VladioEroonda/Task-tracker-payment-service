@@ -4,15 +4,12 @@ import com.github.vladioeroonda.payment.tasktrackerpayment.service.PaymentCheckS
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Tag(name = "Клиент", description = "Внешний API")
 @RestController
@@ -33,6 +30,6 @@ public class PaymentCheckController {
             @Parameter(description = "Сумма") @RequestParam BigDecimal amount,
             @Parameter(description = "Комментарий к платежу, должно быть указано название проекта") @RequestParam String comment
     ) {
-        return paymentCheckService.checkPayment(customerAccountId,developerAccountId, amount, comment);
+        return paymentCheckService.checkPayment(customerAccountId, developerAccountId, amount, comment);
     }
 }

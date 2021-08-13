@@ -82,7 +82,7 @@ public class TransactionServiceImpl implements TransactionService {
                             );
                         });
 
-                if(clientFrom.getId()==clientTo.getId()){
+                if (clientFrom.getId() == clientTo.getId()) {
                     throw new TransactionBadDataException("При TRANSFER получатель и отправитель платежа должны быть разными");
                 }
 

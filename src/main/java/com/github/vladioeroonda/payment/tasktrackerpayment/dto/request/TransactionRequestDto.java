@@ -1,6 +1,5 @@
 package com.github.vladioeroonda.payment.tasktrackerpayment.dto.request;
 
-import com.github.vladioeroonda.payment.tasktrackerpayment.entity.Client;
 import com.github.vladioeroonda.payment.tasktrackerpayment.entity.TransactionType;
 import io.swagger.v3.oas.annotations.media.Schema;
 
