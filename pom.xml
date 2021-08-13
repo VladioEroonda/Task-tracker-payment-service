@@ -6,13 +6,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.github.vladioeroonda.payment</groupId>
     <artifactId>Task-tracker-payment</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Task-tracker-payment</name>
-    <description>Task-tracker-payment</description>
+    <name>Task-tracker-payment-service</name>
+    <description>Платёжный сервис для оплаты проектов Task Tracker </description>
     <properties>
         <java.version>11</java.version>
     </properties>
