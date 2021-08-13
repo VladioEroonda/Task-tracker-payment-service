@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Tag(name = "История операций клиента", description = "Список транзакций Клиента")
+@Tag(name = "История операций клиента", description = "Список транзакций Клиента/история операций")
 @RestController
-@RequestMapping("/api/payment/client")
+@RequestMapping("/api/payment/history")
 public class ClientHistoryController {
 
     private final ClientHistoryService clientHistoryService;

@@ -33,6 +33,8 @@ public class Transaction {
     private BigDecimal amount;
     @Column(nullable = false)
     private LocalDateTime date;
+    @Column
+    private String comment;
 
     public Transaction() {
     }
@@ -42,13 +44,15 @@ public class Transaction {
             Client fromClient,
             Client toClient,
             BigDecimal amount,
-            LocalDateTime date
+            LocalDateTime date,
+            String comment
     ) {
         this.type = type;
         this.fromClient = fromClient;
         this.toClient = toClient;
         this.amount = amount;
         this.date = date;
+        this.comment = comment;
     }
 
     public Transaction(
@@ -57,7 +61,8 @@ public class Transaction {
             Client fromClient,
             Client toClient,
             BigDecimal amount,
-            LocalDateTime date
+            LocalDateTime date,
+            String comment
     ) {
         this.id = id;
         this.type = type;
@@ -65,6 +70,7 @@ public class Transaction {
         this.toClient = toClient;
         this.amount = amount;
         this.date = date;
+        this.comment = comment;
     }
 
     public Long getId() {
@@ -115,17 +121,25 @@ public class Transaction {
         this.date = date;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(id, that.id) && type == that.type && Objects.equals(fromClient, that.fromClient) && Objects.equals(toClient, that.toClient) && Objects.equals(amount, that.amount) && Objects.equals(date, that.date);
+        return Objects.equals(id, that.id) && type == that.type && Objects.equals(fromClient, that.fromClient) && Objects.equals(toClient, that.toClient) && Objects.equals(amount, that.amount) && Objects.equals(date, that.date) && Objects.equals(comment, that.comment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, type, fromClient, toClient, amount, date);
+        return Objects.hash(id, type, fromClient, toClient, amount, date, comment);
     }
 
     @Override
@@ -137,6 +151,7 @@ public class Transaction {
                 ", toClient=" + toClient +
                 ", amount=" + amount +
                 ", date=" + date +
+                ", comment='" + comment + '\'' +
                 '}';
     }
 }

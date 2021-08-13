@@ -17,6 +17,8 @@ public class TransactionResponseDto {
     private ClientResponseDto toClient;
     @Schema(description = "Сумма Транзакции")
     private BigDecimal amount;
+    @Schema(description = "Краткий комментарий к Транзакции")
+    private String comment;
 
     public TransactionResponseDto() {
     }
@@ -25,12 +27,14 @@ public class TransactionResponseDto {
             TransactionType type,
             ClientResponseDto fromClient,
             ClientResponseDto toClient,
-            BigDecimal amount
+            BigDecimal amount,
+            String comment
     ) {
         this.type = type;
         this.fromClient = fromClient;
         this.toClient = toClient;
         this.amount = amount;
+        this.comment = comment;
     }
 
     public TransactionResponseDto(
@@ -38,13 +42,15 @@ public class TransactionResponseDto {
             TransactionType type,
             ClientResponseDto fromClient,
             ClientResponseDto toClient,
-            BigDecimal amount
+            BigDecimal amount,
+            String comment
     ) {
         this.id = id;
         this.type = type;
         this.fromClient = fromClient;
         this.toClient = toClient;
         this.amount = amount;
+        this.comment = comment;
     }
 
     public Long getId() {
@@ -87,6 +93,14 @@ public class TransactionResponseDto {
         this.amount = amount;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     @Override
     public String toString() {
         return "TransactionResponseDto{" +
@@ -95,6 +109,7 @@ public class TransactionResponseDto {
                 ", fromClient=" + fromClient +
                 ", toClient=" + toClient +
                 ", amount=" + amount +
+                ", comment='" + comment + '\'' +
                 '}';
     }
 }

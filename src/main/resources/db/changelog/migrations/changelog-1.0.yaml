@@ -72,3 +72,6 @@ databaseChangeLog:
                   type: TIMESTAMP
                   constraints:
                     nullable: false
+              - column:
+                  name: comment
+                  type: VARCHAR(255)

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "Транзакции", description = "Отвечает за платёжные операции Клиента")
+@Tag(name = "Транзакция", description = "Отвечает за осуществление платёжных операций")
 @RestController
 @RequestMapping("/api/payment/transaction")
 public class TransactionController {
