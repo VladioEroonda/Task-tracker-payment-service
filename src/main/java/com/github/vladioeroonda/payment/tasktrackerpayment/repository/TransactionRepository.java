@@ -18,7 +18,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
             "WHERE t.fromClient.accountId=:customer " +
             "AND t.toClient.accountId=:developer " +
             "AND t.amount=:amount " +
-            "AND t.comment=:comment")
+            "AND UPPER(t.comment) LIKE :comment")
     Transaction checkPayment(@Param("customer") String customerAccountId,
                              @Param("developer") String developerAccountId,
                              @Param("amount") BigDecimal amount,

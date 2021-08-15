@@ -10,6 +10,7 @@ import com.github.vladioeroonda.payment.tasktrackerpayment.service.PaymentCheckS
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Locale;
 
 @Service
 public class PaymentCheckImpl implements PaymentCheckService {
@@ -44,7 +45,7 @@ public class PaymentCheckImpl implements PaymentCheckService {
         });
 
         Transaction payment =
-                transactionRepository.checkPayment(customerAccountId, developerAccountId, amount, comment);
+                transactionRepository.checkPayment(customerAccountId, developerAccountId, amount, comment.toUpperCase(Locale.ROOT));
 
         if (payment == null) {
             throw new TransactionBadDataException("Некорректные сумма или комментарий к платежу. Обратитесь в поддержку");
