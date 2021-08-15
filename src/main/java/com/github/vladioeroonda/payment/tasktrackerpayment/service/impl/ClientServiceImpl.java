@@ -44,7 +44,7 @@ public class ClientServiceImpl implements ClientService {
             throw new ClientBadDataException("Некорректные ФИО Клиента");
         }
 
-        boolean isUuidBusy = false;
+        boolean isUuidBusy;
         String accountId;
 
         do {

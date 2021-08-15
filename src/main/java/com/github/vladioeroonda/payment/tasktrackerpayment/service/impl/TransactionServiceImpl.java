@@ -98,10 +98,10 @@ public class TransactionServiceImpl implements TransactionService {
                 clientFrom.setBalance(transferResult);
                 clientTo.setBalance(clientTo.getBalance().add(transactionForSave.getAmount()));
 
-                clientRepository.save(clientTo);
+//                clientRepository.save(clientTo);
                 break;
         }
-        clientRepository.save(clientFrom);
+//        clientRepository.save(clientFrom);
         transactionRepository.save(transactionForSave);
 
         return convertFromEntityToResponse(transactionForSave);
