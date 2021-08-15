@@ -75,3 +75,32 @@ databaseChangeLog:
               - column:
                   name: comment
                   type: VARCHAR(255)
+
+  - changeSet:
+      id: 000003-adding-test-client
+      author: Vlad Yushkov
+      changes:
+        - insert:
+            tableName: client
+            columns:
+              - column:
+                  name: name
+                  value: TEST_PROJECT_CUSTOMER
+              - column:
+                  name: account_id
+                  value: d84a40a2-8dec-4e2b-94a3-3e351c9f46d0
+              - column:
+                  name: balance
+                  value: 100000
+        - insert:
+            tableName: client
+            columns:
+              - column:
+                  name: name
+                  value: TEST_DEVELOPER
+              - column:
+                  name: account_id
+                  value: f102c7ff-423b-468a-b7b3-9ebabd1fd122
+              - column:
+                  name: balance
+                  value: 0
