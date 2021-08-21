@@ -6,6 +6,7 @@ import com.github.vladioeroonda.payment.tasktrackerpayment.entity.Client;
 import com.github.vladioeroonda.payment.tasktrackerpayment.exception.ClientBadDataException;
 import com.github.vladioeroonda.payment.tasktrackerpayment.repository.ClientRepository;
 import com.github.vladioeroonda.payment.tasktrackerpayment.service.ClientService;
+import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,7 +41,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientResponseDto addClient(ClientResponseDto requestDto) {
 
-        if (requestDto.getName() == null || requestDto.getName().isBlank()) {
+        if (StringUtils.isBlank(requestDto.getName())) {
             throw new ClientBadDataException("Некорректные ФИО Клиента");
         }
 

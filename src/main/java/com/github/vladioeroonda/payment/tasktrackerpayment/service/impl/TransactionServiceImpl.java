@@ -51,7 +51,6 @@ public class TransactionServiceImpl implements TransactionService {
         Transaction transactionForSave = convertFromRequestToEntity(requestDto);
         transactionForSave.setDate(LocalDateTime.now());
 
-
         switch (transactionForSave.getType()) {
             case DEPOSIT:
                 transactionForSave.setToClient(transactionForSave.getFromClient());// клиент From и To один и тот же
@@ -98,10 +97,8 @@ public class TransactionServiceImpl implements TransactionService {
                 clientFrom.setBalance(transferResult);
                 clientTo.setBalance(clientTo.getBalance().add(transactionForSave.getAmount()));
 
-//                clientRepository.save(clientTo);
                 break;
         }
-//        clientRepository.save(clientFrom);
         transactionRepository.save(transactionForSave);
 
         return convertFromEntityToResponse(transactionForSave);

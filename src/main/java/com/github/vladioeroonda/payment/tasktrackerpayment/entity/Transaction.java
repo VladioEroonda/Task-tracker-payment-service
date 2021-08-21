@@ -144,14 +144,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction{" +
-                "id=" + id +
-                ", type=" + type +
-                ", fromClient=" + fromClient +
-                ", toClient=" + toClient +
-                ", amount=" + amount +
-                ", date=" + date +
-                ", comment='" + comment + '\'' +
-                '}';
+        return String.format("Transaction{ id=%d, type= %s, fromClient= %s, toClient= %s, amount= %f, date= %s, comment= %s }",
+                id, type, fromClient, toClient, amount, date, comment);
     }
 }

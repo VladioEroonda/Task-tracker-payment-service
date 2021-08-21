@@ -4,7 +4,6 @@ import com.github.vladioeroonda.payment.tasktrackerpayment.dto.response.ClientRe
 import com.github.vladioeroonda.payment.tasktrackerpayment.service.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,13 +28,13 @@ public class ClientController {
     @GetMapping()
     public ResponseEntity<List<ClientResponseDto>> getAllClients() {
         List<ClientResponseDto> clients = clientService.getAllClients();
-        return new ResponseEntity<>(clients, HttpStatus.OK);
+        return ResponseEntity.ok().body(clients);
     }
 
     @Operation(summary = "Добавление нового Клиента")
     @PostMapping
     public ResponseEntity<ClientResponseDto> addNewClient(@RequestBody ClientResponseDto requestDto) {
         ClientResponseDto client = clientService.addClient(requestDto);
-        return new ResponseEntity<>(client, HttpStatus.CREATED);
+        return ResponseEntity.ok().body(client);
     }
 }
