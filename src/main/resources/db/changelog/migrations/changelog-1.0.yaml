@@ -1,0 +1,106 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 000001-create-table-client
+      author: Vlad Yushkov
+      changes:
+        - createTable:
+            tableName: client
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: account_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: balance
+                  type: NUMERIC(19,2)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 000002-create-table-transaction
+      author: Vlad Yushkov
+      changes:
+        - createTable:
+            tableName: transaction
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: type
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: from_client_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    references: client(id)
+                    foreignKeyName: fk_client_from
+              - column:
+                  name: to_client_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    references: client(id)
+                    foreignKeyName: fk_client_to
+              - column:
+                  name: amount
+                  type: NUMERIC(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: comment
+                  type: VARCHAR(255)
+
+  - changeSet:
+      id: 000003-adding-test-client
+      author: Vlad Yushkov
+      changes:
+        - insert:
+            tableName: client
+            columns:
+              - column:
+                  name: name
+                  value: TEST_PROJECT_CUSTOMER
+              - column:
+                  name: account_id
+                  value: d84a40a2-8dec-4e2b-94a3-3e351c9f46d0
+              - column:
+                  name: balance
+                  value: 100000
+        - insert:
+            tableName: client
+            columns:
+              - column:
+                  name: name
+                  value: TEST_DEVELOPER
+              - column:
+                  name: account_id
+                  value: f102c7ff-423b-468a-b7b3-9ebabd1fd122
+              - column:
+                  name: balance
+                  value: 0
