@@ -42,7 +42,7 @@ class TransactionServiceImplTest {
                 new TransactionRequestDto(TRANSACTION_TYPE, CLIENT_FROM, CLIENT_TO, AMOUNT, COMMENT);
 
         Mockito.when(clientRepository.findById(CLIENT_FROM.getId()))
-                .thenThrow(ClientNotFoundException.class);
+                .thenReturn(Optional.empty());
 
         assertThrows(ClientNotFoundException.class, () -> {
             TransactionServiceImpl transactionService = new TransactionServiceImpl(transactionRepository, clientRepository, new ModelMapper());
@@ -131,7 +131,7 @@ class TransactionServiceImplTest {
         Mockito.when(clientRepository.findById(CLIENT_FROM.getId()))
                 .thenReturn(Optional.of(expectedClientFrom));
         Mockito.when(clientRepository.findById(CLIENT_TO.getId()))
-                .thenThrow(ClientNotFoundException.class);
+                .thenReturn(Optional.empty());
 
         assertThrows(ClientNotFoundException.class, () -> {
             TransactionServiceImpl transactionService = new TransactionServiceImpl(transactionRepository, clientRepository, new ModelMapper());

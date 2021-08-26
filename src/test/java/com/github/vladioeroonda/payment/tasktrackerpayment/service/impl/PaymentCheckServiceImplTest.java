@@ -52,7 +52,7 @@ class PaymentCheckServiceImplTest {
 
         Mockito
                 .when(clientRepository.findByAccountId(CUSTOMER_ACCOUNT_ID))
-                .thenThrow(ClientNotFoundException.class);
+                .thenReturn(Optional.empty());
 
         assertThrows(ClientNotFoundException.class, () -> {
             paymentCheckService.checkPayment(CUSTOMER_ACCOUNT_ID, DEVELOPER_ACCOUNT_ID, AMOUNT, COMMENT);
@@ -64,7 +64,7 @@ class PaymentCheckServiceImplTest {
         Mockito.when(clientRepository.findByAccountId(Mockito.anyString()))
                 .thenReturn(Optional.of(new Client()));
         Mockito.when(clientRepository.findByAccountId(DEVELOPER_ACCOUNT_ID))
-                .thenThrow(ClientNotFoundException.class);
+                .thenReturn(Optional.empty());
 
         assertThrows(ClientNotFoundException.class, () -> {
             paymentCheckService.checkPayment(CUSTOMER_ACCOUNT_ID, DEVELOPER_ACCOUNT_ID, AMOUNT, COMMENT);

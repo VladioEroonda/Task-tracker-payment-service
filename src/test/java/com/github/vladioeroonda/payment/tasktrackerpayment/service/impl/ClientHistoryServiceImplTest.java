@@ -35,7 +35,7 @@ class ClientHistoryServiceImplTest {
     @Test
     void getAllTransactionsByClientId_ShouldThrowException() {
         Long expectedId = 123L;
-        Mockito.when(clientRepository.findById(Mockito.anyLong())).thenThrow(new ClientNotFoundException());
+        Mockito.when(clientRepository.findById(Mockito.anyLong())).thenReturn(Optional.empty());
 
         assertThrows(ClientNotFoundException.class, () -> {
             clientHistoryService.getAllTransactionsByClientId(expectedId);
