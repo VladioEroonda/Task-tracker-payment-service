@@ -52,7 +52,6 @@ public class TransactionServiceImpl implements TransactionService {
         Transaction transactionForSave = convertFromRequestToEntity(requestDto);
         transactionForSave.setDate(LocalDateTime.now());
 
-
         switch (transactionForSave.getType()) {
             case DEPOSIT:
                 transactionForSave.setToClient(transactionForSave.getFromClient());// клиент From и To один и тот же
@@ -61,15 +60,6 @@ public class TransactionServiceImpl implements TransactionService {
 
             case WITHDRAW:
                 transactionForSave.setToClient(transactionForSave.getFromClient());// клиент From и To один и тот же
-
-//                BigDecimal withdrawResult = clientFrom.getBalance().subtract(transactionForSave.getAmount());
-//
-//                if (withdrawResult.compareTo(new BigDecimal("0.00")) < 0) {
-//                    throw new TransactionBadDataException(
-//                            String.format("Недостаточно средств на счету для снятия. Ваш Баланс: %.2f",
-//                                    clientFrom.getBalance().doubleValue())
-//                    );
-//                }
 
                 BigDecimal withdrawResult = accountRefill(clientFrom.getBalance(), transactionForSave.getAmount(), clientFrom);
 
@@ -90,17 +80,7 @@ public class TransactionServiceImpl implements TransactionService {
                     throw new TransactionBadDataException("При TRANSFER получатель и отправитель платежа должны быть разными");
                 }
 
-//                BigDecimal transferResult =
-//                        clientFrom.getBalance().subtract(transactionForSave.getAmount());
-//
-//                if (transferResult.compareTo(new BigDecimal("0.00")) < 0) {
-//                    throw new TransactionBadDataException(
-//                            String.format("Не достаточно средств на счету для снятия. Ваш Баланс: %.2f",
-//                                    clientFrom.getBalance().doubleValue())
-//                    );
-//                }
-
-                BigDecimal transferResult = accountRefill(clientFrom.getBalance(),transactionForSave.getAmount(), clientFrom);
+                BigDecimal transferResult = accountRefill(clientFrom.getBalance(), transactionForSave.getAmount(), clientFrom);
 
                 clientFrom.setBalance(transferResult);
                 clientTo.setBalance(clientTo.getBalance().add(transactionForSave.getAmount()));
@@ -112,9 +92,8 @@ public class TransactionServiceImpl implements TransactionService {
         return convertFromEntityToResponse(transactionForSave);
     }
 
-    private BigDecimal accountRefill(BigDecimal source, BigDecimal amount, Client clientFrom){
-        BigDecimal transferResult =
-                source.subtract(amount);
+    private BigDecimal accountRefill(BigDecimal source, BigDecimal amount, Client clientFrom) {
+        BigDecimal transferResult = source.subtract(amount);
 
         if (transferResult.compareTo(new BigDecimal("0.00")) < 0) {
             throw new TransactionBadDataException(

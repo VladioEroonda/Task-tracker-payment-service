@@ -109,10 +109,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", accountId='" + accountId + '\'' +
-                '}';
+        return String.format("Client{ id= %d, name= %s, accountId= %s }", id, name, accountId);
+
     }
 }

@@ -13,11 +13,11 @@ import java.math.BigDecimal;
 import java.util.Locale;
 
 @Service
-public class PaymentCheckImpl implements PaymentCheckService {
+public class PaymentCheckServiceImpl implements PaymentCheckService {
     private final TransactionRepository transactionRepository;
     private final ClientRepository clientRepository;
 
-    public PaymentCheckImpl(TransactionRepository transactionRepository, ClientRepository clientRepository) {
+    public PaymentCheckServiceImpl(TransactionRepository transactionRepository, ClientRepository clientRepository) {
         this.transactionRepository = transactionRepository;
         this.clientRepository = clientRepository;
     }
@@ -37,7 +37,7 @@ public class PaymentCheckImpl implements PaymentCheckService {
             );
         });
 
-        Client developer = clientRepository.findByAccountId(customerAccountId).orElseThrow(() -> {
+        Client developer = clientRepository.findByAccountId(developerAccountId).orElseThrow(() -> {
             throw new ClientNotFoundException(
                     String.format("Клиент сервиса (получатель) с р/с %s не найден",
                             developerAccountId)
